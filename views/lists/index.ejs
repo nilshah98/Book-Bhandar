@@ -2,5 +2,16 @@
     <a href="/lists/create">
         Add new List
     </a>
+    <div>
+    <% lists.forEach(function(list){ %>
+        <div>
+            <p>
+            <h4> <%= list.listName %> </h4>
+            <a href="/lists/<%= list._id %>" class=""">More Info</a>
+            </p>
+        </div>
+    <% }); %>
+    </div>
     <p> Current  user <%= user %> </p>
+
 <% include ../partials/footer.ejs %>

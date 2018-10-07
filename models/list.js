@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var listSchema = mongoose.Schema({
-    name: String,
+    listName: String,
     // user:{
     //     id:{
     //         type:mongoose.Schema.Types.ObjectId,
@@ -14,8 +14,8 @@ var listSchema = mongoose.Schema({
     //         ref: "Comment"
     //     }
     // ],
-    listbooks: [String],              //Array of ISBN numbers
+    listBooks: [String]              //Array of ISBN numbers
     //bookmark: [String]              //Array of User Id
 });
 
-module.exports = mongoose.model("List",listSchema);
+module.exports = mongoose.model("List", listSchema);
