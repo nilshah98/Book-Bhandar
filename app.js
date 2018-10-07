@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local');
 
 // MODEL FILES
 var User = require('./models/user');
+var List = require('./models/list');
 
 // ROUTE FILES
 var indexRouter = require('./routes/index');
