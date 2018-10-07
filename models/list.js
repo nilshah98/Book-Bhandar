@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 
-// Linking list to user as foreign key sort of
 var listSchema = new mongoose.Schema({
     name: String,
     description: String,
+// Contains ISBN numbers -
+    books: [String],
+// Contains user as foreign key -
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
