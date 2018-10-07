@@ -1,0 +1,20 @@
+<% include ../partials/header.ejs %>
+
+    <h1>
+        Add New List!
+    </h1>
+    <div class="listform">
+        <form class="listform" method="POST" action="/lists">
+            <label>ListName:</label>
+            <input type='text' name='listName'>
+            <br>
+            <label>Book ISBN numbers:</label> 
+            <input type='text' name='listBooks' placeholder='space separated ISBN numbers'>
+            <br>
+            <button name=""> Submit
+        </form>
+    </div>
+
+
+<% include ../partials/footer.ejs %>
+
