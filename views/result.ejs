@@ -1,0 +1,11 @@
+<% include ./partials/header.ejs %>
+
+<% var max = data.length %>
+<% var rng = max > 5 ? 5:max %>
+<% for(var i=0; i<rng; i++) { %>
+<p></p><%= data[i].title %></p>
+<% if (data[i].isbn != null) {%>
+<p><%= data[i].isbn[0] %></p>
+<% } %>
+<% } %>
+<% include ./partials/footer.ejs %>

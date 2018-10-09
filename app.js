@@ -11,11 +11,13 @@ var LocalStrategy = require('passport-local');
 // MODEL FILES
 var User = require('./models/user');
 var List = require('./models/list');
+var Comment=require("./models/comment");
 
 // ROUTE FILES
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var listsRouter = require('./routes/lists');
+var commentRoutes=require("./routes/comments");
 
 // INIT EXPRESS
 var app = express();
@@ -23,7 +25,6 @@ var app = express();
 // SETUP VIEW ENGINE AND VIEW DIRECTORY
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 
 // CONNECT MONGOOSE, create a database named as bb
@@ -70,15 +71,18 @@ app.use(function(req, res, next){
   next();
 })
 
+
+//LINK TO ROUTE FILE
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/lists', listsRouter);
+// app.use("/lists/:id/comments", commentRoutes);
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-});
+}); 
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -92,3 +96,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// app.listen(process.env.PORT, process.env.IP, function(){
+//   console.log("Server connected!");
+// });

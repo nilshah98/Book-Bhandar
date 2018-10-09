@@ -1,0 +1,10 @@
+<% include ./partials/header.ejs %>
+<p> Search By</p><br>
+<form action="/search" method="POST">
+  <input type="radio" name="searchType" value="title"> Title
+  <input type="radio" name="searchType" value="author"> Author
+  <input type="radio" name="searchType" value="isbn"> ISBN<br>
+  <input type="text" name="search" placeholder="Search"><br>
+  <button type="submit" value="search">Search</button>
+</form>
+<% include ./partials/footer.ejs %>

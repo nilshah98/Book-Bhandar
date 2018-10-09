@@ -1,15 +1,23 @@
 var mongoose = require('mongoose');
 
-var listSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-// Contains ISBN numbers -
-    books: [String],
-// Contains user as foreign key -
-    creator: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-    }
-})
+var listSchema = mongoose.Schema({
+    listName: String,
+    listDesc: String,
+    user:{
+        id:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        },
+        // username: String
+    },
+    // comments: [
+    //     {
+    //         type:mongoose.Schema.Types.ObjectId,
+    //         ref: "Comment"
+    //     }
+    // ],
+    listBooks: [String]              //Array of ISBN numbers
+    //bookmark: [String]              //Array of User Id
+});
 
-module.exports = mongoose.model("List",listSchema);
+module.exports = mongoose.model("List", listSchema);
