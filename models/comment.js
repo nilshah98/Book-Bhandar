@@ -9,9 +9,7 @@ var commentSchema = mongoose.Schema({
         },
         username: String
     },
-    text: String,
-    // like: Number,
-    // dislike: Number
+    text: String
 });
 
 module.exports = mongoose.model("Comment",commentSchema);

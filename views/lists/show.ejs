@@ -5,42 +5,44 @@
     <div>
         List name is:
         <p>
-            <%= list.listName %>
+            <%= list.listName %> <br>
+            <%= list.listDesc %>
+            <%= list._id %>
         </p> 
     </div>
     <div>
         Books are:
-        <%= list.listBooks %>
+        <% if(data!=null){%>
+            <% var max = data.length %>
+            <% var rng = max %>
+            <%= rng %>
+            <% for(var i=0; i<rng; i++) { %>
+                <p><%= i+1 %></p>
+                <p></p><%= data[i].title %></p>
+                <% if (data[i].isbn != null) {%>
+                    <% var isbn = data[i].isbn[0] %>
+                    <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+                    <img src=<%= url %> />
+                <% } %>
+                <hr>
+            <% } %>
+        <% } %>
     </div>
-    
-    
-    <div class="container">
-    	<div class"text-center m-2">
-    		<b>Comments</b>
-    	</div>
-    					
-    	<div class="text-right">
-    		<a class="btn btn-primary m-2" href="/lists/<%=list._id%>/comments/new">Add new comment</a>
-    	</div>
-    	<hr>
-    			
-    	<!--list.comments.forEach(function(comment){ %>-->
-    	<!--	<div class="row">-->
-    	<!--	    <div class="col-md-12 col-lg-12">-->
-    		    	
-    	<!--	        <strong><= comment.author.username %></strong>-->
-    	<!--	        <span class="pull-right">10 days ago</span>-->
-    	<!--	        <p><= comment.text %></p>-->
-    		                        
-    	<!--	         if(currentUser && comment.author.id.equals(currentUser._id)){ %>-->
-    	<!--	        <a class="btn btn-xs btn-warning" href="/problems/<=problem._id%>/comments/<=comment._id%>/edit">Edit</a>-->
-    	<!--	        <form id="delete-form" action="/problems/<=problem._id%>/comments/<=comment._id%>?_method=DELETE" method="POST">-->
-    	<!--	            <input type="submit" class= "btn btn-xs btn-danger" value="Delete">-->
-    	<!--	        </form>-->
-    	<!--	         } %>-->
-    	<!--	    </div>-->
-    	<!--	</div>-->
-    	<!--	< }); %>-->
-    </div>
+    <br>
+    <br>
+    <h1>Comments</h1>
+    <% commentData.forEach(function(comment){ %>
+        <p><%= comment.text %></p>
+        <h6><%= comment.author.username %></h6>
+        <hr>
+    <% }) %>
+    <% if (currentUser != null) { %>
+        <p>"/lists/<%= list._id %>/comments"</p>
+        <form action="/lists/<%= list._id %>/comments" method="POST">
+            <textarea rows="4" cols="50" name="commentText" placeholder="Review Me!"></textarea>
+            <button type="submit">Post It!</button>
+        </form>
+    <% } %>
 
+    
 <% include ../partials/footer %>

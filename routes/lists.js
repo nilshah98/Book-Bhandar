@@ -2,9 +2,13 @@ var express = require("express");
 var router = express.Router();
 var middleware = require('../middleware');
 var List = require('../models/list');
+var axios = require("axios");
 
-router.get("/", middleware.isLoggedIn, function(req,res){
-    //res.render("lists/index", {user: req.user});
+
+// GET ALL LISTS BELONGING TO ANY USER, NO LOGIN REQUIRED -
+router.get("/", function(req,res){
+    
+    // FETCH ALL LISTS, BELONGING TO ANY USER
     List.find({},function(err,allLists){
         if(err){
             console.log(err);
@@ -14,38 +18,24 @@ router.get("/", middleware.isLoggedIn, function(req,res){
     })
 })
 
-router.get("/create", middleware.isLoggedIn, function(req,res){
-    //res.send("In list create");
-    res.render("lists/create", {user: req.user});
+
+// GET FORM TO CREATE A NEW LIST, LOGIN REQUIRED
+router.get("/new", middleware.isLoggedIn, function(req,res){
+    
+    // CREATE A NEW LIST
+    res.render("lists/new", {user: req.user});
 })
 
-router.get("/:id", function(req, res){
-    //find the list with provided ID
-    List.findById(req.params.id).populate("comments").exec(function(err, foundList){ //populate("comments")
-        if(err){
-            res.send(err);
-        } else {
-            //render show template with that list
-            res.render("lists/show",{list: foundList});
-        }
-    });
-});
-
+// POST TO CREATE A NEW LIST, LOGIN REQUIRED
 router.post('/',middleware.isLoggedIn, function(req,res,next){
-    //get data from form and add to lists array
-    //redirect to lists page
     
     var name = req.body.listName;
-    var books = req.body.listBooks;
-    books = books.split(',');
-    
+    var desc = req.body.listDesc;
     var user={
         id: req.user._id,
-        // username: req.user.username
     };
     
-    // console.log(name, books)
-    var newList = {listName: name, listBooks: books, user: user};
+    var newList = {listName: name, listBooks: [], user: user, listDesc: desc};
 
     List.create(newList, function(err, newlyCreated){
         if(err){
@@ -57,5 +47,103 @@ router.post('/',middleware.isLoggedIn, function(req,res,next){
     })
 });
 
+
+// GET A SPECIFIC LIST CONTENTS
+router.get("/:id", function(req, res){
+    var bookList = [];
+    var bookData = [];
+    var commentData = [];
+    var counter = 0;
+    
+    // CALLBACK FUNCTION, TO RENDER ALL CONTENTS OF A LIST
+    function reply(foundList, bookData, commentData){
+        res.render("lists/show",{list:foundList, data:bookData, commentData:commentData});
+    }
+    
+// FETCH A SINGLE BOOK, BY THE LIST ID
+    List.findById(req.params.id).populate("comments").exec(function(err, foundList){
+        if(err){
+            res.send(err);
+        } else {
+            bookList = foundList.listBooks;
+            commentData = foundList.comments;
+            
+// ITERATE THROUGH ISBN NUMBERS
+            bookList.forEach((bk)=>{
+                
+// CHECK IF ISBN NUMBER IS NOT A NULL STRING 
+            if(bk.length>0){
+
+// SEND A GET REQUEST TO OPENBOOKS API
+                axios.get("http://openlibrary.org/search.json",{
+                    params:{
+                        isbn: bk
+                    }
+                    })
+// IF DATA SUCCESSFULLY RETURNED -
+                    .then(function(response){
+                        var temp = response["data"]["docs"]
+                        
+// LOOP THROUGH EACH BOOK OF THE RETURNED DATA, AND CHECK ISBN NUMBER OF TOP ELEM
+// IF ISBN NUMBERS MATCH, FOUND ! BREAK
+                            for(var book of temp){
+                                if(book.isbn != null){
+                                    if(book.isbn[0] == bk){
+                                        bookData.push(book);
+                                        break;
+                                    }
+                                }
+                            }
+                        })
+                        
+// IF ERROR WHILE REQ OR RES FOR THE API, CATCH IT HERE -
+                    .catch(function(err){
+                        console.log(err)
+                    })
+
+// IF NO ERROR, THEN FINALLY, INCREMENT THE COUNTER, AND CHECK IF WHOLE LIST OF ISBN DONE
+// IF YES, CALL THE REPLY CALLBACK FUNCTION, TO RENDER ALL DATA OF THE LIST
+                    .then(function(){
+                        counter++;
+                        if(counter == bookList.length){
+
+// RESET COUNTER
+                            counter = -1000000000000;
+                            reply(foundList,bookData, commentData);
+                        }
+                    })
+                }
+            })
+        }
+    });
+});
+
+
+router.put("/book/add/:id", middleware.isLoggedIn, function(req,res){
+    var isbn = req.params.id;
+    var listId = req.body.listId;
+    List.findOne({_id: listId}, function(err, list){
+        if(err){
+            console.log(err);
+        }else{
+
+// CHECK IF BOOK ALREADY PRESENT IN LIST, IF YES, ADD -
+        if(list.listBooks.indexOf(isbn) == -1){
+            list.listBooks.push(isbn);
+        }
+
+// SAVE THE LIST AFTER UPDATE, AND REDIRECT
+        list.save(function(err){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.redirect("/lists/");            
+            }
+            
+        })
+        }
+    })
+})
 
 module.exports = router;

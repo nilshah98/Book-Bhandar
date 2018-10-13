@@ -10,12 +10,12 @@ var listSchema = mongoose.Schema({
         },
         // username: String
     },
-    // comments: [
-    //     {
-    //         type:mongoose.Schema.Types.ObjectId,
-    //         ref: "Comment"
-    //     }
-    // ],
+    comments: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ],
     listBooks: [String]              //Array of ISBN numbers
     //bookmark: [String]              //Array of User Id
 });

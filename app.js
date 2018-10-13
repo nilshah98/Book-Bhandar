@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
+var methodOverride = require('method-override');
 
 // MODEL FILES
 var User = require('./models/user');
@@ -25,7 +26,12 @@ var app = express();
 // SETUP VIEW ENGINE AND VIEW DIRECTORY
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// SETUP LOGGING
 app.use(logger('dev'));
+
+// SETUP METHODOVERRIDE INITIATOR, _method
+app.use(methodOverride("_method"));
 
 // CONNECT MONGOOSE, create a database named as bb
 var mongoDB = 'mongodb://127.0.0.1/bb';
@@ -76,7 +82,7 @@ app.use(function(req, res, next){
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/lists', listsRouter);
-// app.use("/lists/:id/comments", commentRoutes);
+app.use("/lists/:id/comments", commentRoutes);
 
 
 // catch 404 and forward to error handler

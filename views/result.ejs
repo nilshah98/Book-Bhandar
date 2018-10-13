@@ -1,11 +1,24 @@
 <% include ./partials/header.ejs %>
 
+<% if(data!=null){%>
 <% var max = data.length %>
 <% var rng = max > 5 ? 5:max %>
 <% for(var i=0; i<rng; i++) { %>
+<p><%= i %></p>
 <p></p><%= data[i].title %></p>
 <% if (data[i].isbn != null) {%>
-<p><%= data[i].isbn[0] %></p>
+<% var isbn = data[i].isbn[0] %>
+<% var url = "http://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+<img src=<%= url %> />
+<% } %>
+<% var action = "lists/book/add/"+isbn %>
+<form action=<%= action %> method="POST">
+<% for(var j=0; j<list.length; j++){%>
+<input type="radio" name="listId" value=<%= list[j]._id %>><%= list[j].listName %><br>
+<% } %>
+<button type="submit" value="Add">Add</button>
+</form>
+<hr>
 <% } %>
 <% } %>
 <% include ./partials/footer.ejs %>

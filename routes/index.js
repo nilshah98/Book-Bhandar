@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var List = require('../models/list');
 var passport = require('passport');
 var axios = require('axios');
+var middleware = require('../middleware');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -43,11 +45,12 @@ router.get("/logout", function(req, res){
   res.redirect("/");
 });
 
-router.get("/search", function(req,res){
-  res.render("search");
+router.get("/search", middleware.isLoggedIn, function(req,res){
+  res.render("search",{"data": []});
 })
 
-router.post("/search", function(req,res){
+router.post("/search", middleware.isLoggedIn, function(req,res){
+  
   var search = req.body.search;
   var type = req.body.searchType;
   if(type=="author"){
@@ -58,15 +61,28 @@ router.post("/search", function(req,res){
     search = {isbn: search}
   }
   
-  console.log(search, type);
-  
   axios.get('http://openlibrary.org/search.json', {
       params: search
   })
   .then(function (response) {
       var data = response["data"]["docs"];
-      console.log(data);
-      res.render('result',{"data":data})
+      if(req.user){
+        var addList = [];
+        List.find({}, function(err,foundList){
+          if(err){
+            console.log(err);
+          }else{
+            foundList.forEach(function(list){
+                console.log(req.user._id, list.user.id);
+                if(req.user._id.equals(list.user.id)){
+                  addList.push(list);
+                }
+            })
+            console.log(addList);
+            res.render('search',{"data":data, "list":addList});
+          }
+        })
+      }
   })
   .catch(function (error) {
       console.log(error);
