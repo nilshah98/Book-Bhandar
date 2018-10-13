@@ -17,8 +17,9 @@ var List = require('../models/list');
 router.post("/", middleware.isLoggedIn,function(req, res){
     console.log("HIT IT");
   //lookup Campground using ID
+  console.log(req.query);
   console.log(req.params);
-  List.findById(req.params.id, function(err, list){
+  List.findById(req.query.id, function(err, list){
       if(err){
           console.log(err,"XXXXx");
           res.redirect("/lists");

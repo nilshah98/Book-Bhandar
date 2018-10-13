@@ -38,7 +38,7 @@
     <% }) %>
     <% if (currentUser != null) { %>
         <p>"/lists/<%= list._id %>/comments"</p>
-        <form action="/lists/<%= list._id %>/comments" method="POST">
+        <form action="/lists/<%= list._id %>/comments/?id=<%= list._id %>" method="POST">
             <textarea rows="4" cols="50" name="commentText" placeholder="Review Me!"></textarea>
             <button type="submit">Post It!</button>
         </form>
