@@ -1,0 +1,19 @@
+.heading{
+    padding: 2em;
+    cursor: pointer;
+
+    &__main{
+        font-size: 5em;
+        text-align: center;
+        font-family: Pacifico;
+        font-weight: 100;
+    }
+
+    &__sub{
+        font-size: 2em;
+        font-style: italic;
+        text-align: center;
+        font-family: Acme;
+        font-weight: 100;
+    }
+}

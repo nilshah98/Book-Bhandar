@@ -1,0 +1,47 @@
+.isocard{
+    position: relative;
+    width: 25vh;
+    height: 25vw;
+    transform: rotate(-30deg) skew(25deg) scale(.8);
+    transition: 0.5s;
+    cursor: pointer;
+    // top: 10vh;
+
+    
+    // &:hover{
+    //     & .isocard__content:nth-child(4){
+    //         transform: translate(120px,-120px);
+    //         opacity: .8;
+    //     }
+    //     & .isocard__content:nth-child(3){
+    //         transform: translate(80px,-80px);
+    //         opacity: .6;
+    //     }
+    //     & .isocard__content:nth-child(2){
+    //         transform: translate(40px,-40px);
+    //         opacity: .4;
+    //     }
+    //     & .isocard__content:nth-child(1){
+    //         opacity: .2;
+    //     }
+    // }
+
+    &__content{
+        background: var(--color-gray);
+        position: absolute;
+        width: 100%;
+        font-size: 2em;
+        transition: 0.5s;
+
+        img{
+            max-width: 100%;
+        }
+    }
+}
+
+@media screen and (max-device-width: 650px) {
+    .isocard {
+        width: 50vw;
+        height: 50vh;
+    }
+}
