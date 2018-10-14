@@ -311,7 +311,8 @@ CONTENT
   height: 25vw;
   transform: rotate(-30deg) skew(25deg) scale(0.8);
   transition: 0.5s;
-  cursor: pointer; }
+  cursor: pointer;
+  top: 10vh; }
   .isocard__content {
     background: var(--color-gray);
     position: absolute;
@@ -454,7 +455,7 @@ CONTENT
   list-style-type: none;
   padding: 0;
   max-width: 34em;
-  margin: 5em auto; }
+  margin: 10em auto; }
 
 .card {
   position: absolute;
@@ -1001,7 +1002,11 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
+<<<<<<< HEAD
   color: #5e3e12;
+=======
+  color: #832433;
+>>>>>>> cc49af0f77afbec3ccd7f1b075e1541ff86e44f8
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }
@@ -1081,7 +1086,11 @@ figure span:nth-child(2) {
 .social-btnxs {
   height: 9em;
   margin: auto;
+<<<<<<< HEAD
   font-size: 1em;
+=======
+  font-size: .9em;
+>>>>>>> cc49af0f77afbec3ccd7f1b075e1541ff86e44f8
   text-align: center;
   top: 0;
   bottom: 0;
