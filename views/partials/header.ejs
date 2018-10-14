@@ -25,10 +25,15 @@
 
     <!-- The nav menu -->
     <nav class="nav">
-        <a class="nav-item" href="">Dashboard</a>
-        <a class="nav-item" href="">History</a>
-        <a class="nav-item" href="">Statistics</a>
-        <a class="nav-item" href="">Settings</a>
+        <a class="nav-item" href="/">Home</a>
+        <a class="nav-item" href="/lists">Lists</a>
+        <a class="nav-item" href="/search">Search</a>
+        <% if(!currentUser){ %>
+        <a class="nav-item" href="/login">Login</a>
+        <a class="nav-item" href="/register">Signup</a>
+        <% } else { %>
+        <a class="nav-item" href="/logout">Logout</a>
+        <% } %>
     </nav>
 
     <!-- Just dummy content like in the animated gif -->
