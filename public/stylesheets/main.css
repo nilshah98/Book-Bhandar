@@ -1001,7 +1001,7 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
-  color: #3a5241;
+  color: #5e3e12;
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }
@@ -1079,9 +1079,9 @@ figure span:nth-child(2) {
   transform: scale(1); }
 
 .social-btnxs {
-  height: 90px;
+  height: 9em;
   margin: auto;
-  font-size: 0;
+  font-size: 1em;
   text-align: center;
   top: 0;
   bottom: 0;
@@ -1091,15 +1091,15 @@ figure span:nth-child(2) {
 .social-btnxs .btnx {
   display: inline-block;
   background-color: #fff;
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
-  margin: 0 10px;
+  width: 9em;
+  height: 9em;
+  line-height: 9em;
+  margin: 0 1em;
   text-align: center;
   position: relative;
   overflow: hidden;
   border-radius: 28%;
-  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5em 1.5em -0.5em rgba(0, 0, 0, 0.1);
   opacity: 0.99; }
 
 .social-btnxs .btnx:before {
@@ -1111,7 +1111,7 @@ figure span:nth-child(2) {
   transform: rotate(45deg); }
 
 .social-btnxs .btnx .fa {
-  font-size: 38px;
+  font-size: 3.8em;
   vertical-align: middle; }
 
 .heading {
