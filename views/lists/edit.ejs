@@ -1,7 +1,9 @@
 <% include ../partials/header %>
+<h1 class="title">Edit Lists</h1>
 <div class="list__container">
 <div><h2><%= list.listName %></h2></div>
 <div><h4><%= list.listDesc %></h4></div>
+<a href="/lists/<%=list.id%>/remove"><div class="buttonx buttonx--danger">Remove List</div></a>
     <div>
         <strong>Total books: </strong>
         <% if(data!=null){%>

@@ -172,7 +172,13 @@ router.get("/:id/bookmarks",middleware.isLoggedIn, function(req, res){
         }
     });
 });
-    
+
+router.get("/:id/remove",middleware.isLoggedIn,function(req,res){
+    List.findById(req.params.id).remove().exec(function(err, removeList){
+        res.redirect("/lists");
+    })
+})
+
 router.get("/:id/edit", middleware.isLoggedIn, function(req,res){
     var bookList = [];
     var bookData = [];

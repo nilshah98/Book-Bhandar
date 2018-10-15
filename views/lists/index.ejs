@@ -1,4 +1,5 @@
 <% include ../partials/header.ejs %>
+<h1 class="title">Lists</h1>
 <div class="list__container">
     <a href="/lists/new">
         <div class="buttonx buttonx--secondary">Add New List</div>
@@ -24,9 +25,14 @@
                         <div class="list__btn">
                             <a href="/lists/<%= list._id %>"><div class="buttonx buttonx--tertiary buttonx--small">More Info</div></a>                
                         </div>
-                        <div class="list__btn">
-                            <a href="/search %>"><div class="buttonx buttonx--tertiary buttonx--small">Add Books</div></a>                
-                        </div>
+<% if(currentUser != null){ %>
+    <% if(list.user.id.equals(currentUser._id)){ %>
+        <div style="display: flex;">
+        <a href="/lists/<%= list._id %>/edit"><div class="buttonx buttonx--secondary">Edit</div></a>
+        <a href="/search"><div class="buttonx buttonx--secondary">Add Books</div></a>
+        </div>
+    <% } %>
+<% } %>
                     </div>
                 </div>
             </div>

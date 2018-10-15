@@ -1,4 +1,6 @@
 <% include ../partials/header %>
+<h1 class="title">More Info!</h1>
+
 <div class="list__container">
 <div><h2><%= list.listName %></h2></div>
 <div><h4><%= list.listDesc %></h4></div>
@@ -54,6 +56,13 @@
     </div>
     <br>
     <br>
+    <% if(list.user.id.equals(currentUser._id)){ %>
+        <div style="display: flex;">
+        <a href="/lists/<%= list._id %>/edit"><div class="buttonx buttonx--secondary">Edit</div></a>
+        <a href="/search"><div class="buttonx buttonx--secondary">Add Books</div></a>
+        </div>
+    <% } %>
+
     <h1>Comments</h1>
     <% commentData.forEach(function(comment){ %>
         <p><%= comment.text %></p>
