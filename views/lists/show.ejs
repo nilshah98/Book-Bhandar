@@ -1,4 +1,5 @@
 <% include ../partials/header %>
+<div class="list__container">
     <h1>
         Individual List
     </h1>
@@ -7,7 +8,6 @@
         <p>
             <%= list.listName %> <br>
             <%= list.listDesc %>
-            <%= list._id %>
         </p> 
     </div>
     <div>
@@ -17,14 +17,25 @@
             <% var rng = max %>
             <%= rng %>
             <% for(var i=0; i<rng; i++) { %>
-                <p><%= i+1 %></p>
-                <p></p><%= data[i].title %></p>
-                <% if (data[i].isbn != null) {%>
-                    <% var isbn = data[i].isbn[0] %>
-                    <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
-                    <img src=<%= url %> />
-                <% } %>
-                <hr>
+            <div class="list">
+                <div class="list__left">
+                    <div class="list__image">
+                        <% if (data[i].isbn != null) {%>
+                            <% var isbn = data[i].isbn[0] %>
+                            <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+                            <img src=<%= url %> />
+                        <% } %>                        
+                    </div>
+                </div>
+                <div class="list__right">
+                    <div class="list__index">
+                        <p><%= i+1 %></p>
+                    </div>
+                    <div class="list__name">
+                        <p><%= data[i].title %></p>                        
+                    </div>
+                </div>
+            </div>
             <% } %>
         <% } %>
     </div>
@@ -37,12 +48,10 @@
         <hr>
     <% }) %>
     <% if (currentUser != null) { %>
-        <p>"/lists/<%= list._id %>/comments"</p>
         <form action="/lists/<%= list._id %>/comments/?id=<%= list._id %>" method="POST">
             <textarea rows="4" cols="50" name="commentText" placeholder="Review Me!"></textarea>
             <button type="submit">Post It!</button>
         </form>
     <% } %>
-
-    
+</div>
 <% include ../partials/footer %>

@@ -1,8 +1,19 @@
 <% include ./partials/header%>
-<h1>Login</h1>
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="Login!">
+
+<div class="form__container" >
+<h1 class="title">Login</h1>
+<form class="form" action="/login" method="POST">
+    <div class="form__control">
+    <label for="username">Username</label>   
+    <input class="form__input" type="text" name="username" placeholder="username">
+    </div>
+    <div class="form__control">
+    <label for="password">Password</label>
+    <input class="form__input" type="password" name="password" placeholder="password">
+    </div>
+    <div class="form__control">
+    <input class="form__submit" type="submit" value="Login!">        
+    </div>
 </form>
+</div>
 <% include ./partials/footer%>

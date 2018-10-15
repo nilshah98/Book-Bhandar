@@ -10,7 +10,7 @@
   --color-white: #fff;
   --color-black: #222;
   --color-gray: #ccc;
-  --color-primary: #4ECA78;
+  --color-primary: #D4A16E;
   background-color: var(--color-black);
   color: var(--color-black);
   font-size: 62.5%; }
@@ -18,7 +18,7 @@
 body {
   box-sizing: border-box;
   overflow-x: hidden;
-  font-size: 1em; }
+  font-size: 1rem; }
 
 a,
 a:visited,
@@ -42,7 +42,7 @@ ul {
   align-items: center;
   justify-content: space-evenly;
   position: relative;
-  padding: 2em; }
+  padding: 2rem; }
 
 .footer {
   width: 100vw;
@@ -50,18 +50,18 @@ ul {
   align-items: center;
   justify-content: space-evenly;
   position: relative;
-  padding: 2em 0;
+  padding: 2rem 0;
   background: rgba(0, 0, 0, 0.2);
   flex-direction: column; }
 
 .madeby {
-  font-size: 2em;
-  padding: 1em;
+  font-size: 2rem;
+  padding: 1rem;
   overflow-y: hidden;
   cursor: pointer; }
   .madeby i {
     color: red;
-    transform: translateY(3em);
+    transform: translateY(3rem);
     transition: .2s all ease-in-out;
     padding: 3px; }
   .madeby:hover i {
@@ -72,6 +72,15 @@ ul {
     font-size: 40%; }
   .container {
     flex-direction: column; } }
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem; }
 
 hr {
   border: 0;
@@ -319,7 +328,7 @@ a {
     background: var(--color-gray);
     position: absolute;
     width: 100%;
-    font-size: 2em;
+    font-size: 2rem;
     transition: 0.5s; }
     .isocard__content img {
       max-width: 100%; }
@@ -331,7 +340,7 @@ a {
 
 .container__content1 {
   width: 50vw;
-  padding: 2em;
+  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -339,8 +348,8 @@ a {
 .container .container__content1:nth-child(2) {
   flex-direction: column; }
   .container .container__content1:nth-child(2) .headtext {
-    font-size: 2.5em;
-    margin: 1em;
+    font-size: 2.5rem;
+    margin: 1rem;
     font-family: Acme;
     font-weight: 100; }
 
@@ -377,7 +386,7 @@ a {
   border-radius: 10px; }
 
 .count-title {
-  font-size: 4em;
+  font-size: 4rem;
   font-weight: normal;
   margin-top: 10px;
   margin-bottom: 0;
@@ -385,7 +394,7 @@ a {
 
 .count-text {
   font-family: 'Amaranth', sans-serif;
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: normal;
   color: white;
   margin-top: 10px;
@@ -413,18 +422,18 @@ a {
     margin-right: 5%; } }
 
 .count-text {
-  font-size: 3em; }
+  font-size: 3rem; }
 
 .counter i {
-  font-size: 3em; }
+  font-size: 3rem; }
 
 .count-subtext {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-style: italic; }
 
 .featureitem {
   display: flex;
-  font-size: 2em;
+  font-size: 2rem;
   align-items: center;
   justify-content: center; }
   .featureitem__gif {
@@ -433,7 +442,7 @@ a {
     justify-content: center; }
   .featureitem__content {
     width: 50vw;
-    padding: 5em; }
+    padding: 5rem; }
 
 .feature .featureitem:nth-child(2n+1) {
   flex-direction: row-reverse; }
@@ -446,7 +455,7 @@ a {
       height: 50%; }
   .featureitem__content {
     width: 100vw;
-    padding: 1em; }
+    padding: 1rem; }
   .featureitem {
     flex-direction: column; }
   .feature .featureitem:nth-child(2n+1) {
@@ -456,8 +465,9 @@ a {
   position: relative;
   list-style-type: none;
   padding: 0;
-  max-width: 34em;
-  margin: 10em auto; }
+  max-width: 34rem;
+  margin: 10em auto;
+  font-size: 1.2rem; }
 
 .card {
   position: absolute;
@@ -541,15 +551,15 @@ a {
 /* --- Product Card ---- */
 #make-3D-space {
   position: relative;
-  perspective: 80em;
-  width: 34em;
-  height: 50em;
+  perspective: 80rem;
+  width: 34rem;
+  height: 50rem;
   transform-style: preserve-3d;
   transition: transform 5s; }
 
 #product-front, #product-back {
-  width: 33.5em;
-  height: 50em;
+  width: 33.5rem;
+  height: 50rem;
   background: #fff;
   position: absolute;
   left: -5px;
@@ -572,11 +582,11 @@ a {
   transition: all 100ms ease-out; }
 
 #product-card {
-  width: 32.5em;
-  height: 49em;
+  width: 32.5rem;
+  height: 49rem;
   position: absolute;
-  top: 1em;
-  left: 1em;
+  top: 1rem;
+  left: 1rem;
   overflow: hidden;
   transform-style: preserve-3d;
   -webkit-transition: 100ms ease-out;
@@ -615,8 +625,8 @@ div#product-card.flip180 {
 #product-card.animate {
   top: 5px;
   left: 5px;
-  width: 33.5em;
-  height: 50em;
+  width: 33.5rem;
+  height: 50rem;
   box-shadow: 0px 1.3em 2.1em -0.5em rgba(0, 0, 0, 0.3);
   -webkit-transition: 100ms ease-out;
   -moz-transition: 100ms ease-out;
@@ -626,36 +636,36 @@ div#product-card.flip180 {
 .stats-container {
   background: #fff;
   position: absolute;
-  top: 38.6em;
+  top: 38.6rem;
   left: 0;
   width: 100%;
-  height: 30em;
-  padding: 2.7em 3.5em 3.5em;
+  height: 30rem;
+  padding: 2.7em 3.5em 3.5rem;
   -webkit-transition: all 200ms ease-out;
   -moz-transition: all 200ms ease-out;
   -o-transition: all 200ms ease-out;
   transition: all 200ms ease-out; }
 
 #product-card.animate .stats-container {
-  top: 27.2em;
+  top: 27.2rem;
   -webkit-transition: all 200ms ease-out;
   -moz-transition: all 200ms ease-out;
   -o-transition: all 200ms ease-out;
   transition: all 200ms ease-out; }
 
 .stats-container .product_name {
-  font-size: 2.2em;
+  font-size: 2.2rem;
   color: #393c45; }
 
 .stats-container p {
-  font-size: 1.6em;
+  font-size: 1.6rem;
   color: #b1b1b3;
   padding: 2px 0 2em 0; }
 
 .stats-container .product_price {
   float: right;
   color: #48cfad;
-  font-size: 2.2em;
+  font-size: 2.2rem;
   font-weight: 600; }
 
 .image_overlay {
@@ -680,27 +690,27 @@ div#product-card.flip180 {
 .product-options strong {
   font-weight: 700;
   color: #393c45;
-  font-size: 1.4em; }
+  font-size: 1.4rem; }
 
 .product-options span {
   color: #969699;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   display: block;
-  margin-bottom: 0.8em; }
+  margin-bottom: 0.8rem; }
 
 #view_details {
   position: absolute;
-  top: 11.2em;
+  top: 11.2rem;
   left: 50%;
-  margin-left: -8.5em;
+  margin-left: -8.5rem;
   border: 2px solid #fff;
   color: #fff;
-  font-size: 1.9em;
+  font-size: 1.9rem;
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
   padding: 1em 0;
-  width: 17.2em;
+  width: 17.2rem;
   opacity: 0;
   -webkit-transition: all 200ms ease-out;
   -moz-transition: all 200ms ease-out;
@@ -714,10 +724,10 @@ div#product-card.flip180 {
 
 #product-card.animate #view_details {
   opacity: 1;
-  width: 15.2em;
-  font-size: 1.5em;
-  margin-left: -7.5em;
-  top: 11.5em;
+  width: 15.2rem;
+  font-size: 1.5rem;
+  margin-left: -7.5rem;
+  top: 11.5rem;
   -webkit-transition: all 200ms ease-out;
   -moz-transition: all 200ms ease-out;
   -o-transition: all 200ms ease-out;
@@ -725,20 +735,20 @@ div#product-card.flip180 {
 
 div.colors div {
   margin-top: 3px;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-right: 5px;
   float: left; }
 
 div.colors div span {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.5rem;
+  height: 1.5rem;
   display: block;
   border-radius: 50%; }
 
 div.colors div span:hover {
-  width: 1.7em;
-  height: 1.7em;
+  width: 1.7rem;
+  height: 1.7rem;
   margin: -1px 0 0 -1px; }
 
 div.c-blue span {
@@ -752,13 +762,13 @@ div.c-green span {
 
 div.c-white span {
   background: #fff;
-  width: 1.4em;
-  height: 1.4em;
+  width: 1.4rem;
+  height: 1.4rem;
   border: 1px solid #e8e9eb; }
 
 div.shadow {
-  width: 33.5em;
-  height: 52em;
+  width: 33.5rem;
+  height: 52rem;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -780,18 +790,18 @@ div.shadow {
 
 #flip-back {
   position: absolute;
-  top: 2em;
-  right: 2em;
-  width: 3em;
-  height: 3em;
+  top: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
   cursor: pointer; }
 
 #cx, #cy {
   background: #d2d5dc;
   position: absolute;
   width: 0px;
-  top: 1.5em;
-  right: 1.5em;
+  top: 1.5rem;
+  right: 1.5rem;
   height: 3px;
   -webkit-transition: all 250ms ease-in-out;
   -moz-transition: all 250ms ease-in-out;
@@ -809,7 +819,7 @@ div.shadow {
 
 #cx.s1, #cy.s1 {
   right: 0;
-  width: 3em;
+  width: 3rem;
   -webkit-transition: all 100ms ease-out;
   -moz-transition: all 100ms ease-out;
   -ms-transition: all 100ms ease-out;
@@ -838,7 +848,7 @@ div.shadow {
 
 #cx.s1 {
   right: 0;
-  width: 3em;
+  width: 3rem;
   -webkit-transition: all 100ms ease-out;
   -moz-transition: all 100ms ease-out;
   -ms-transition: all 100ms ease-out;
@@ -866,8 +876,8 @@ div.shadow {
   transition: all 100ms ease-out; }
 
 #carousel {
-  width: 33.5em;
-  height: 50em;
+  width: 33.5rem;
+  height: 50rem;
   overflow: hidden;
   position: relative; }
 
@@ -877,23 +887,23 @@ div.shadow {
   left: 0; }
 
 #carousel li {
-  width: 33.5em;
-  height: 50em;
+  width: 33.5rem;
+  height: 50rem;
   float: left;
   overflow: hidden; }
 
 .arrows-perspective {
-  width: 33.5em;
-  height: 5.5em;
+  width: 33.5rem;
+  height: 5.5rem;
   position: absolute;
-  top: 21.8em;
+  top: 21.8rem;
   transform-style: preserve-3d;
   transition: transform 5s;
-  perspective: 33.5em; }
+  perspective: 33.5rem; }
 
 .carouselPrev, .carouselNext {
-  width: 5em;
-  height: 5.5em;
+  width: 5rem;
+  height: 5.5rem;
   background: #ccc;
   position: absolute;
   top: 0;
@@ -903,7 +913,7 @@ div.shadow {
 
 .carouselNext {
   top: 0;
-  right: -2.6em;
+  right: -2.6rem;
   -webkit-transform: rotateY(-117deg);
   -moz-transform: rotateY(-117deg);
   -o-transform: rotateY(-117deg);
@@ -921,7 +931,7 @@ div.shadow {
   transition: all 200ms ease-out; }
 
 .carouselPrev {
-  left: -2.6em;
+  left: -2.6rem;
   top: 0;
   -webkit-transform: rotateY(117deg);
   -moz-transform: rotateY(117deg);
@@ -941,11 +951,11 @@ div.shadow {
 
 #carousel .x, #carousel .y {
   height: 2px;
-  width: 1.5em;
+  width: 1.5rem;
   background: #48cfad;
   position: absolute;
-  top: 3.1em;
-  left: 1.7em;
+  top: 3.1rem;
+  left: 1.7rem;
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg); }
@@ -954,7 +964,7 @@ div.shadow {
   -ms-transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
-  top: 2.1em; }
+  top: 2.1rem; }
 
 #carousel .carouselNext .x {
   -ms-transform: rotate(45deg);
@@ -1004,7 +1014,7 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
-  color: #6a772e;
+  color: #91934a;
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }
@@ -1082,9 +1092,9 @@ figure span:nth-child(2) {
   transform: scale(1); }
 
 .social-btnxs {
-  height: 9em;
+  height: 9rem;
   margin: auto;
-  font-size: .9em;
+  font-size: .9rem;
   text-align: center;
   top: 0;
   bottom: 0;
@@ -1094,10 +1104,10 @@ figure span:nth-child(2) {
 .social-btnxs .btnx {
   display: inline-block;
   background-color: #fff;
-  width: 9em;
-  height: 9em;
-  line-height: 9em;
-  margin: 0 1em;
+  width: 9rem;
+  height: 9rem;
+  line-height: 9rem;
+  margin: 0 1rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1114,19 +1124,19 @@ figure span:nth-child(2) {
   transform: rotate(45deg); }
 
 .social-btnxs .btnx .fa {
-  font-size: 3.8em;
+  font-size: 3.8rem;
   vertical-align: middle; }
 
 .heading {
-  padding: 2em;
+  padding: 2rem;
   cursor: pointer; }
   .heading__main {
-    font-size: 5em;
+    font-size: 5rem;
     text-align: center;
     font-family: Pacifico;
     font-weight: 100; }
   .heading__sub {
-    font-size: 2em;
+    font-size: 2rem;
     font-style: italic;
     text-align: center;
     font-family: Acme;
@@ -1134,7 +1144,57 @@ figure span:nth-child(2) {
 
 .title {
   font-family: Lobster;
-  font-size: 5em;
+  font-size: 5rem;
   text-align: center;
   font-weight: 100;
   text-decoration: underline; }
+
+.form {
+  font-family: Acme;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center; }
+  .form label {
+    font-size: 2rem; }
+  .form__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 2rem;
+    font-size: 2rem;
+    flex-direction: column;
+    border: 2px solid var(--color-primary); }
+  .form h1 {
+    font-size: 1rem; }
+  .form__input {
+    font-size: 2rem;
+    display: block;
+    outline: none;
+    border: 2px solid var(--color-primary);
+    height: 2.5rem;
+    border-radius: 1rem; }
+  .form__submit {
+    padding: .5rem;
+    border-radius: 1rem;
+    font-size: 2rem; }
+  .form__control {
+    margin: .5em;
+    text-align: center; }
+
+.list {
+  display: flex; }
+  .list__container {
+    font-size: 2rem; }
+  .list__left img {
+    height: 12rem;
+    width: auto; }
+  .list__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+    padding: 2rem; }

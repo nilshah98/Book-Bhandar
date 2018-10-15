@@ -10,7 +10,7 @@
     --color-white: #fff;
     --color-black: #222;
     --color-gray: #ccc;
-    --color-primary: #4ECA78;
+    --color-primary: #D4A16E;
     background-color: var(--color-black);
     color: var(--color-black);
     font-size: 62.5%;
@@ -19,7 +19,7 @@
 body {
     box-sizing: border-box;
     overflow-x: hidden;
-    font-size: 1em;
+    font-size: 1rem;
 }
   
   a,
@@ -47,7 +47,7 @@ body {
     align-items: center;
     justify-content: space-evenly;
     position: relative;
-    padding: 2em;
+    padding: 2rem;
 }
 
 .footer{
@@ -56,19 +56,19 @@ body {
     align-items: center;
     justify-content: space-evenly;
     position: relative;
-    padding: 2em 0;
+    padding: 2rem 0;
     background: rgba(0,0,0,0.2);
     flex-direction: column;
 }
 
 .madeby{
-    font-size: 2em;
-    padding: 1em;
+    font-size: 2rem;
+    padding: 1rem;
     overflow-y: hidden;
     cursor: pointer;
     i{
         color: red;
-        transform: translateY(3em);
+        transform: translateY(3rem);
         transition: .2s all ease-in-out;
         padding: 3px;
     }
@@ -86,6 +86,16 @@ body {
     .container{
         flex-direction: column;
     }
+}
+
+.main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
 }
 
 hr{

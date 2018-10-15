@@ -1,0 +1,47 @@
+.form{
+    font-family: Acme;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    
+    label{
+        font-size: 2rem;
+    }
+    
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 2rem;
+        font-size: 2rem;
+        flex-direction: column;
+        border: 2px solid var(--color-primary);
+    }
+    
+    h1{
+        font-size: 1rem;
+    }
+    
+    &__input{
+        font-size: 2rem;
+        display: block;
+        outline: none;
+        border: 2px solid var(--color-primary);
+        height: 2.5rem;
+        border-radius: 1rem;
+    }
+    
+    &__submit{
+        padding: .5rem;
+        border-radius: 1rem;
+        font-size: 2rem;
+    }
+    
+    &__control{
+        margin: .5em;
+        text-align: center;
+    }
+}

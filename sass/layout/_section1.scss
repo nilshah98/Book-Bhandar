@@ -1,7 +1,7 @@
 .container{
     &__content1{
         width: 50vw;
-        padding: 2em;
+        padding: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -11,8 +11,8 @@
         flex-direction: column;
 
         .headtext{
-            font-size: 2.5em;
-            margin: 1em;
+            font-size: 2.5rem;
+            margin: 1rem;
             font-family: Acme;
             font-weight: 100;
         }

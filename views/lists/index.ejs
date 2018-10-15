@@ -1,22 +1,32 @@
 <% include ../partials/header.ejs %>
+<div class="list__container">
     <a href="/lists/new">
         Add new List
     </a>
     <div>
     <% lists.forEach(function(list){ %>
-        <div>
-            <p>
-            <h4> <%= list.listName %> </h4>
-            <p> <%= list.listBooks %></p>
-            <a href="/lists/<%= list._id %>" class=""">More Info</a>
-            </p>
-            <h6> User Id:<%= list.user %> </h6>
-            <!--<h6> User Name:<%= user.username %> </h6>-->
+        <div class="list">
+            <div class="list__left">
+                <div class="list__image">
+                    <% var isbn = list.listBooks[0] %>
+                    <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+                    <img src=<%= url %> />
+                </div>
+            </div>
+            <div class="list__right">
+                <div class="list__name">
+                    <p><strong>Name: </strong><%= list.listName %> </p>
+                </div>
+                <div class="list__desc">
+                    <p><strong>Description: </strong><%= list.listDesc %></p>                
+                </div>
+                <div class="list__btn">
+                    <a href="/lists/<%= list._id %>">More Info</a>                
+                </div>
+            </div>
         </div>
     <% }); %>
-    
-    
     </div>
-    <p> Current  user <%= user %> </p>
+</div>
 
 <% include ../partials/footer.ejs %>

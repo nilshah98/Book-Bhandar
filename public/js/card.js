@@ -86,7 +86,7 @@ $(document).ready(function(){
 		var newLeft = currentLeft + carouselSlideWidthx;
 		console.log(newLeft,carouselWidth);
 		if((carouselWidth-newLeft) < carouselSlideWidthx || isAnimating === true){return;}
-		$('#carousel ul').css({'left': "-" + newLeft + "em",
+		$('#carousel ul').css({'left': "-" + newLeft + "rem",
 							   "transition": "300ms ease-out"
 							 });
 		isAnimating = true;
@@ -103,7 +103,7 @@ $(document).ready(function(){
 			newLeft = 0;
 		}
 		if(newLeft < 0  || isAnimating === true){return;}
-		$('#carousel ul').css({'left': "-" + newLeft + "em",
+		$('#carousel ul').css({'left': "-" + newLeft + "rem",
 							   "transition": "300ms ease-out"
 							 });
 	    isAnimating = true;
