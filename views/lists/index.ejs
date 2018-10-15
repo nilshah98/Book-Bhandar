@@ -1,32 +1,37 @@
 <% include ../partials/header.ejs %>
 <div class="list__container">
     <a href="/lists/new">
-        Add new List
+        <div class="buttonx buttonx--secondary">Add New List</div>
     </a>
     <div>
-    <% lists.forEach(function(list){ %>
-        <div class="list">
-            <div class="list__left">
-                <div class="list__image">
-                    <% var isbn = list.listBooks[0] %>
-                    <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
-                    <img src=<%= url %> />
+        <% lists.forEach(function(list){ %>
+            <div class="list">
+                <div class="list__left">
+                    <div class="list__image">
+                        <% var isbn = list.listBooks[0] %>
+                        <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+                        <img src=<%= url %> />
+                    </div>
+                </div>
+                <div class="list__right">
+                    <div class="list__name">
+                        <p><strong>Name: </strong><%= list.listName %> </p>
+                    </div>
+                    <div class="list__desc">
+                        <p><strong>Description: </strong><%= list.listDesc %></p>                
+                    </div>
+                    <div class="list__btns">
+                        <div class="list__btn">
+                            <a href="/lists/<%= list._id %>"><div class="buttonx buttonx--tertiary buttonx--small">More Info</div></a>                
+                        </div>
+                        <div class="list__btn">
+                            <a href="/search %>"><div class="buttonx buttonx--tertiary buttonx--small">Add Books</div></a>                
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="list__right">
-                <div class="list__name">
-                    <p><strong>Name: </strong><%= list.listName %> </p>
-                </div>
-                <div class="list__desc">
-                    <p><strong>Description: </strong><%= list.listDesc %></p>                
-                </div>
-                <div class="list__btn">
-                    <a href="/lists/<%= list._id %>">More Info</a>                
-                </div>
-            </div>
+            <% }); %>
         </div>
-    <% }); %>
     </div>
-</div>
-
-<% include ../partials/footer.ejs %>
+    
+    <% include ../partials/footer.ejs %>

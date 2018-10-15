@@ -11,6 +11,8 @@
   --color-black: #222;
   --color-gray: #ccc;
   --color-primary: #D4A16E;
+  --color-secondary: #533557;
+  --color-tertiary: #9A3767;
   background-color: var(--color-black);
   color: var(--color-black);
   font-size: 62.5%; }
@@ -18,7 +20,8 @@
 body {
   box-sizing: border-box;
   overflow-x: hidden;
-  font-size: 1rem; }
+  font-size: 1rem;
+  font-family: Acme; }
 
 a,
 a:visited,
@@ -61,7 +64,7 @@ ul {
   cursor: pointer; }
   .madeby i {
     color: red;
-    transform: translateY(3rem);
+    transform: translateY(4rem);
     transition: .2s all ease-in-out;
     padding: 3px; }
   .madeby:hover i {
@@ -435,7 +438,8 @@ a {
   display: flex;
   font-size: 2rem;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-family: Acme; }
   .featureitem__gif {
     width: 50vw;
     display: flex;
@@ -466,7 +470,7 @@ a {
   list-style-type: none;
   padding: 0;
   max-width: 34rem;
-  margin: 10em auto;
+  margin: 10rem auto;
   font-size: 1.2rem; }
 
 .card {
@@ -627,7 +631,7 @@ div#product-card.flip180 {
   left: 5px;
   width: 33.5rem;
   height: 50rem;
-  box-shadow: 0px 1.3em 2.1em -0.5em rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1.3rem 2.1rem -0.5rem rgba(0, 0, 0, 0.3);
   -webkit-transition: 100ms ease-out;
   -moz-transition: 100ms ease-out;
   -o-transition: 100ms ease-out;
@@ -640,7 +644,7 @@ div#product-card.flip180 {
   left: 0;
   width: 100%;
   height: 30rem;
-  padding: 2.7em 3.5em 3.5rem;
+  padding: 2.7rem 3.5rem 3.5rem;
   -webkit-transition: all 200ms ease-out;
   -moz-transition: all 200ms ease-out;
   -o-transition: all 200ms ease-out;
@@ -660,7 +664,7 @@ div#product-card.flip180 {
 .stats-container p {
   font-size: 1.6rem;
   color: #b1b1b3;
-  padding: 2px 0 2em 0; }
+  padding: 2px 0 2rem 0; }
 
 .stats-container .product_price {
   float: right;
@@ -709,7 +713,7 @@ div#product-card.flip180 {
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
-  padding: 1em 0;
+  padding: 1rem 0;
   width: 17.2rem;
   opacity: 0;
   -webkit-transition: all 200ms ease-out;
@@ -1014,7 +1018,11 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
+<<<<<<< HEAD
   color: #36402d;
+=======
+  color: #848d65;
+>>>>>>> d9c248f101c3c2182f931134445d5cfe41c0a710
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }
@@ -1112,7 +1120,7 @@ figure span:nth-child(2) {
   position: relative;
   overflow: hidden;
   border-radius: 28%;
-  box-shadow: 0 0.5em 1.5em -0.5em rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1.5rem -0.5rem rgba(0, 0, 0, 0.1);
   opacity: 0.99; }
 
 .social-btnxs .btnx:before {
@@ -1185,11 +1193,23 @@ figure span:nth-child(2) {
     text-align: center; }
 
 .list {
-  display: flex; }
+  display: flex;
+  box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  align-content: center;
+  align-items: center;
+  padding: 1.5rem; }
   .list__container {
-    font-size: 2rem; }
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center; }
+  .list__btns {
+    display: flex;
+    justify-content: center; }
   .list__left img {
-    height: 12rem;
+    height: 15rem;
     width: auto; }
   .list__right {
     display: flex;
@@ -1198,3 +1218,36 @@ figure span:nth-child(2) {
     align-content: center;
     justify-content: center;
     padding: 2rem; }
+
+button {
+  outline: none;
+  border: none; }
+
+.buttonx {
+  display: inline-block;
+  font-size: 2rem;
+  line-height: 4rem;
+  color: var(--color-white);
+  padding: 0 1rem;
+  border-radius: 4rem;
+  margin: 1rem;
+  box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  transition: all .2s ease-in-out;
+  cursor: pointer; }
+  .buttonx--secondary {
+    background: var(--color-secondary); }
+  .buttonx--primary {
+    background: var(--color-primary); }
+  .buttonx--success {
+    background: #4bb543; }
+  .buttonx--tertiary {
+    background: var(--color-tertiary); }
+  .buttonx:hover {
+    transform: translateY(5px);
+    box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.5); }
+  .buttonx--small {
+    line-height: 3rem;
+    font-size: 1.5rem;
+    padding: .75rem;
+    border-radius: 3rem;
+    margin: .75rem; }

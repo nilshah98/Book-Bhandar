@@ -11,6 +11,8 @@
     --color-black: #222;
     --color-gray: #ccc;
     --color-primary: #D4A16E;
+    --color-secondary: #533557;
+    --color-tertiary: #9A3767;
     background-color: var(--color-black);
     color: var(--color-black);
     font-size: 62.5%;
@@ -20,6 +22,7 @@ body {
     box-sizing: border-box;
     overflow-x: hidden;
     font-size: 1rem;
+    font-family: Acme;
 }
   
   a,
@@ -68,7 +71,7 @@ body {
     cursor: pointer;
     i{
         color: red;
-        transform: translateY(3rem);
+        transform: translateY(4rem);
         transition: .2s all ease-in-out;
         padding: 3px;
     }

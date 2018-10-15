@@ -9,8 +9,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var methodOverride = require('method-override');
 
-// MODEL FILES
-var User = require('./models/user');
+// MODEL FILES, For which schema to use
+var User = require('./models/user');                
 var List = require('./models/list');
 var Comment=require("./models/comment");
 
