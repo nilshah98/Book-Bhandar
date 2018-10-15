@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+<div class="list__container">
+<div><h2><%= list.listName %></h2></div>
+<div><h4><%= list.listDesc %></h4></div>
+    <div>
+        <strong>Total books: </strong>
+        <% if(data!=null){%>
+            <% var max = data.length %>
+            <% var rng = max %>
+            <%= rng %>            
+            <% for(var i=0; i<rng; i++) { %>
+            <div class="list">
+                <div class="list__left">
+                    <div class="list__image">
+                        <% if (data[i].isbn != null) {%>
+                            <% var isbn = data[i].isbn[0] %>
+                            <% var url = "https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+                            <img src=<%= url %> />
+                        <% } %>                        
+                    </div>
+                </div>
+                <div class="list__right">
+                    <div class="list__index">
+                        <p><strong><%= i+1 %></strong></p>
+                    </div>
+                    <div class="list__name">
+                        <p><strong>Name: </strong><%= data[i].title %></p>                        
+                    </div>
+                    <div class="list__name">
+                        <p><strong>Author: </strong><%= data[i].author_name %></p>                        
+                    </div>
+                    <div class="list__name">
+                        <a href="/lists/<%= list._id %>/<%= data[i].isbn[0] %>"><div class="buttonx buttonx--danger buttonx--small">Remove <i class="fa fa-times" aria-hidden="true"></i></div></a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        <% } %>
+    </div>
+    <br>
+    <br>
+    <h1>Comments</h1>
+    <% commentData.forEach(function(comment){ %>
+        <p><%= comment.text %></p>
+        <h6><strong>Author: </strong><%= comment.author.username %></h6>
+        <hr>
+    <% }) %>
+    <% if (currentUser != null) { %>
+        <form class="form" action="/lists/<%= list._id %>/comments/?id=<%= list._id %>" method="POST">
+            <div class="form__control">
+<textarea rows="4" cols="50" name="commentText" placeholder="Review Me!" class="form__input"></textarea>
+            </div>
+            <button class="buttonx buttonx--secondary buttonx--small" type="submit">Post It!</button>
+        </form>
+    <% } %>
+</div>
+<% include ../partials/footer %>

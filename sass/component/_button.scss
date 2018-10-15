@@ -26,6 +26,10 @@ button{
         background: #4bb543;
     }
 
+    &--danger{
+        background: #dc3545;
+    }
+
 
     &--tertiary{
         background: var(--color-tertiary);

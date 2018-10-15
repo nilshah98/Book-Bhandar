@@ -173,5 +173,94 @@ router.get("/:id/bookmarks",middleware.isLoggedIn, function(req, res){
     });
 });
     
+router.get("/:id/edit", middleware.isLoggedIn, function(req,res){
+    var bookList = [];
+    var bookData = [];
+    var commentData = [];
+    var counter = 0;
+    
+    // CALLBACK FUNCTION, TO RENDER ALL CONTENTS OF A LIST
+    function reply(foundList, bookData, commentData){
+        res.render("lists/edit",{list:foundList, data:bookData, commentData:commentData});
+    }
+    
+    List.findById(req.params.id).populate("comments").exec(function(err, foundList){
+        if(err){
+            console.log(err);
+        }else{
+            if(foundList.user.id.equals(req.user._id)){
+                bookList = foundList.listBooks;
+                commentData = foundList.comments;
+                
+    // ITERATE THROUGH ISBN NUMBERS
+                bookList.forEach((bk)=>{
+                    
+    // CHECK IF ISBN NUMBER IS NOT A NULL STRING 
+                if(bk.length>0){
+    
+    // SEND A GET REQUEST TO OPENBOOKS API
+                    axios.get("http://openlibrary.org/search.json",{
+                        params:{
+                            isbn: bk
+                        }
+                        })
+    // IF DATA SUCCESSFULLY RETURNED -
+                        .then(function(response){
+                            var temp = response["data"]["docs"]
+                            
+    // LOOP THROUGH EACH BOOK OF THE RETURNED DATA, AND CHECK ISBN NUMBER OF TOP ELEM
+    // IF ISBN NUMBERS MATCH, FOUND ! BREAK
+                                for(var book of temp){
+                                    if(book.isbn != null){
+                                        if(book.isbn[0] == bk){
+                                            bookData.push(book);
+                                            break;
+                                        }
+                                    }
+                                }
+                            })
+                            
+    // IF ERROR WHILE REQ OR RES FOR THE API, CATCH IT HERE -
+                        .catch(function(err){
+                            console.log(err)
+                        })
+    
+    // IF NO ERROR, THEN FINALLY, INCREMENT THE COUNTER, AND CHECK IF WHOLE LIST OF ISBN DONE
+    // IF YES, CALL THE REPLY CALLBACK FUNCTION, TO RENDER ALL DATA OF THE LIST
+                        .then(function(){
+                            counter++;
+                            if(counter == bookList.length){
+    
+    // RESET COUNTER
+                                counter = -1000000000000;
+                                reply(foundList,bookData, commentData);
+                            }
+                        })
+                    }
+                })
+            }else{
+                res.render("/");
+            }
+        }
+    })
+})
+
+router.get("/:lid/:bid",middleware.isLoggedIn,function(req,res){
+    console.log("REACHED !")
+    List.findById(req.params.lid, function(err, foundList){
+        if(err){
+            console.log(err);
+        }else{
+            var index = foundList.listBooks.indexOf(req.params.bid);
+            if(index >= 0){
+                foundList.listBooks.splice(index,1);
+                foundList.save();
+            }
+            res.redirect("/lists/"+foundList._id+"/edit");
+        }
+    })
+})
+
+module.exports = router;
 
 module.exports = router;

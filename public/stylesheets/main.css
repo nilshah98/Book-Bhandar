@@ -1018,11 +1018,7 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
-<<<<<<< HEAD
-  color: #36402d;
-=======
-  color: #848d65;
->>>>>>> d9c248f101c3c2182f931134445d5cfe41c0a710
+  color: #0d420b;
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }
@@ -1240,6 +1236,8 @@ button {
     background: var(--color-primary); }
   .buttonx--success {
     background: #4bb543; }
+  .buttonx--danger {
+    background: #dc3545; }
   .buttonx--tertiary {
     background: var(--color-tertiary); }
   .buttonx:hover {
