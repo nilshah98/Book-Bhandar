@@ -1,42 +1,72 @@
 <% include ./partials/header.ejs %>
-<p> Search By</p><br>
-<form action="/search" method="POST">
-  <input type="radio" name="searchType" value="title"> Title
-  <input type="radio" name="searchType" value="author"> Author
-  <input type="radio" name="searchType" value="isbn"> ISBN<br>
-  <input type="text" name="search" placeholder="Search"><br>
-  <button type="submit" value="search">Search</button>
-</form>
 
-<% if(data!=null){%>
-  <% var max = data.length %>
-  <% var rng = max > 5 ? 5:max %>
-  <% for(var i=0; i<rng; i++) { %>
-    <p><%= i+1 %></p>
-    <p></p><%= data[i].title %></p>
-    
-    <% if (data[i].isbn != null) {%>
-        <% var isbn = data[i].isbn[0] %>
-        <% var url = "http://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
-        <img src=<%= url %> />
-    <% } %>
-    
-    <% var action = "lists/book/add/"+isbn %>
-    
-    <form action="<%= action %>?_method=PUT" method="POST">
-    <% for(var j=0; j<list.length; j++){%>
-      <input type="radio" name="listId" value=<%= list[j]._id %>><%= list[j].listName %><br>
-    <% } %>
-    
-    <% if(list.length > 0){%>
-      <button type="submit" value="Add">Add</button>
-    <% } %>
-    </form>
-    
-    <a href="/lists/create">
-      Add new List
-    </a>
-  <hr>
-  <% } %>
-<% } %>
-<% include ./partials/footer.ejs %>
+<div class="form__container">
+  <h1 class="title">Search By</h1>
+  <form action="/search" method="POST" class="form">
+    <div class="form__control">
+      <input type="radio" name="searchType" value="title" checked> Title
+      <input type="radio" name="searchType" value="author"> Author
+      <input type="radio" name="searchType" value="isbn"> ISBN
+    </div>
+    <div class="form__control">
+      <input class="form__input" type="text" name="search" placeholder="Search">
+    </div>
+    <div class="form__control">
+      <button class="buttonx buttonx--small buttonx--success" type="submit" value="search">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="list__container">
+  <% if(data!=null){%>
+    <% var max = data.length %>
+    <% var rng = max > 5 ? 5:max %>
+    <% for(var i=0; i<rng; i++) { %>
+      <div class="list">
+        <div class="list__left">
+          <div class="list__image">
+            <% if (data[i].isbn != null) {%>
+              <% var isbn = data[i].isbn[0] %>
+              <% var url = "http://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg" %>
+              <img src=<%= url %> alt="No Image" />
+              <% } %>      
+            </div>
+          </div>
+          
+          <div class="list__right">
+            <div class="list__index">
+              <p><strong><%= i+1 %>.</strong></p>
+            </div>
+            <div class="list__title">
+              <p><strong>Title: </strong><%= data[i].title %></p>
+            </div>
+          
+          
+          
+          
+          
+          <% var action = "lists/book/add/"+isbn %>
+          
+          <form action="<%= action %>?_method=PUT" method="POST">
+            <% for(var j=0; j<list.length; j++){%>
+              <input type="radio" name="listId" value=<%= list[j]._id %>><%= list[j].listName %><br>
+              <% } %>
+              
+              <% if(list.length > 0){%>
+                <button class="buttonx buttonx--success" type="submit" value="Add">Add</button>
+                <% } %>
+              </form>
+              
+              <a href="/lists/create">
+                <div class="buttonx buttonx--secondary buttonx--small">
+                    Add new List
+                </div>
+              </a>
+            </div>
+              <hr>
+            </div>
+              <% } %>
+              <% } %>
+
+          </div>
+          <% include ./partials/footer.ejs %>
