@@ -53,6 +53,7 @@ router.get("/:id", function(req, res){
     var bookList = [];
     var bookData = [];
     var commentData = [];
+    // var bookmark= [];
     var counter = 0;
     
     // CALLBACK FUNCTION, TO RENDER ALL CONTENTS OF A LIST
@@ -145,5 +146,26 @@ router.put("/book/add/:id", middleware.isLoggedIn, function(req,res){
         }
     })
 })
+
+router.get("/:id/bookmarks",middleware.isLoggedIn, function(req, res){
+    //find and update
+    List.findById(req.params.id, function(err, list){
+        if(err){
+            console.log(err);
+            res.redirect("/lists");
+        }else{
+            console.log("Reached /bookmark part");
+            list.bookmark.push(req.user._id);
+            list.save();
+            //redirect
+            console.log("success", "Successfully added a bookmark!");
+            res.redirect("/lists/"+req.params.id);
+            console.log(req.user._id +" "+req.user.username);
+            
+            console.log(list.bookmark);
+        }
+    });
+});
+    
 
 module.exports = router;

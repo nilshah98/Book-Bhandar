@@ -2,12 +2,36 @@
 <div class="list__container">
 <div><h2><%= list.listName %></h2></div>
 <div><h4><%= list.listDesc %></h4></div>
+
+    <div>
+        <% if(currentUser!= null){ %>
+            <!--<form id="bookmarks" action="/lists/<%= list._id %>/bookmarks" method="POST" >-->
+                <% if(list.bookmark.indexOf(currentUser._id)>=0){ %>
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <% } else { %>
+                    <a href="/lists/<%= list._id %>/bookmarks"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
+                <% } %>
+                <!--<input type="button" onclick="document.getElementById('bookmarks').submit()" class="btn btn-danger" name="Bookmark" value="Bookmark">-->
+                
+                
+                
+            <!--</form>-->
+        <% } %>
+    </div>
+    
     <div>
         <strong>Total books: </strong>
         <% if(data!=null){%>
             <% var max = data.length %>
             <% var rng = max %>
             <%= rng %>
+            
+            <object align="right">
+                <strong>Bookmarks: </strong>
+                <%= list.bookmark.length %>
+            </object>
+            
+            
             <% for(var i=0; i<rng; i++) { %>
             <div class="list">
                 <div class="list__left">
@@ -45,7 +69,7 @@
     <% if (currentUser != null) { %>
         <form class="form" action="/lists/<%= list._id %>/comments/?id=<%= list._id %>" method="POST">
             <div class="form__control">
-<textarea rows="4" cols="50" name="commentText" placeholder="Review Me!" class="form__input"></textarea>
+                <textarea rows="4" cols="50" name="commentText" placeholder="Review Me!" class="form__input"></textarea>
             </div>
             <button class="buttonx buttonx--secondary buttonx--small" type="submit">Post It!</button>
         </form>

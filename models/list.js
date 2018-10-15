@@ -22,8 +22,10 @@ var listSchema = mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
-    ],              //Array of User Id
-    bookmark_count: Number
+    ]             //Array of User Id
 });
+
+
+
 
 module.exports = mongoose.model("List", listSchema);
