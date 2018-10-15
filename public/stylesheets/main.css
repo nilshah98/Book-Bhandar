@@ -1014,7 +1014,7 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
-  color: #91934a;
+  color: #36402d;
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }

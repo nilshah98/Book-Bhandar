@@ -16,8 +16,14 @@ var listSchema = mongoose.Schema({
             ref: "Comment"
         }
     ],
-    listBooks: [String]              //Array of ISBN numbers
-    //bookmark: [String]              //Array of User Id
+    listBooks: [String],              //Array of ISBN numbers
+    bookmark: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],              //Array of User Id
+    bookmark_count: Number
 });
 
 module.exports = mongoose.model("List", listSchema);
