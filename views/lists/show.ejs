@@ -2,22 +2,6 @@
 <div class="list__container">
 <div><h2><%= list.listName %></h2></div>
 <div><h4><%= list.listDesc %></h4></div>
-
-    <div>
-        <% if(currentUser!= null){ %>
-            <!--<form id="bookmarks" action="/lists/<%= list._id %>/bookmarks" method="POST" >-->
-                <% if(list.bookmark.indexOf(currentUser._id)>=0){ %>
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                <% } else { %>
-                    <a href="/lists/<%= list._id %>/bookmarks"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
-                <% } %>
-                <!--<input type="button" onclick="document.getElementById('bookmarks').submit()" class="btn btn-danger" name="Bookmark" value="Bookmark">-->
-                
-                
-                
-            <!--</form>-->
-        <% } %>
-    </div>
     
     <div>
         <strong>Total books: </strong>
@@ -27,6 +11,16 @@
             <%= rng %>
             
             <object align="right">
+                <% if(currentUser!= null){ %>
+                <!--<form id="bookmarks" action="/lists/<%= list._id %>/bookmarks" method="POST" >-->
+                <% if(list.bookmark.indexOf(currentUser._id)>=0){ %>
+                    <a href="/lists/<%= list._id %>/bookmarks"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                <% } else { %>
+                    <a href="/lists/<%= list._id %>/bookmarks"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
+                <% } %>
+                <!--<input type="button" onclick="document.getElementById('bookmarks').submit()" class="btn btn-danger" name="Bookmark" value="Bookmark">-->
+                <!--</form>-->
+                <% } %>
                 <strong>Bookmarks: </strong>
                 <%= list.bookmark.length %>
             </object>

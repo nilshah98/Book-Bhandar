@@ -155,8 +155,14 @@ router.get("/:id/bookmarks",middleware.isLoggedIn, function(req, res){
             res.redirect("/lists");
         }else{
             console.log("Reached /bookmark part");
-            list.bookmark.push(req.user._id);
-            list.save();
+            var index=list.bookmark.indexOf(req.user._id)
+            if(index < 0){
+                list.bookmark.push(req.user._id);
+                list.save();
+            } else {
+                list.bookmark.splice(index, 1);
+                list.save();
+            }
             //redirect
             console.log("success", "Successfully added a bookmark!");
             res.redirect("/lists/"+req.params.id);
