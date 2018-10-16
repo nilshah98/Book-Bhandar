@@ -84,7 +84,6 @@ app.use('/users', usersRouter);
 app.use('/lists', listsRouter);
 app.use("/lists/:id/comments", commentRoutes);
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

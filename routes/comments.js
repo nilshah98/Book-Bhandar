@@ -37,10 +37,10 @@ router.post("/", middleware.isLoggedIn,function(req, res){
                   comment.author.id = req.user._id;
                   comment.author.username = req.user.username;
                   comment.save();
-                  //connect new comment to campground
+                  //connect new comment to lists
                   list.comments.push(comment);
                   list.save();
-                  //redirect campground show page
+                  //redirect lists show page
                   console.log("success", "Successfully added a comment!");
                   res.redirect("/lists/"+list._id);
               }
@@ -49,4 +49,30 @@ router.post("/", middleware.isLoggedIn,function(req, res){
   });
 });
 
+router.get("/edit", function(req,res){
+    console.log("Comments edit");
+    var cid = req.query.id;
+    Comment.findById(cid, function(err,foundComment){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("comment/edit",{ccontent: foundComment});
+        }
+    })
+})
+
+router.post("/edit", function(req,res){
+    var cid = req.query.id;
+    var text = req.body.commentText;
+    
+    Comment.findById(cid, function(err,foundComment){
+        if(err){
+            console.log(err);
+        }else{
+            foundComment.text = text;
+            foundComment.save();
+            res.redirect("/lists");
+        }
+    })
+})
 module.exports = router;

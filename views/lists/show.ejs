@@ -67,6 +67,12 @@
     <% commentData.forEach(function(comment){ %>
         <p><%= comment.text %></p>
         <h6><strong>Author: </strong><%= comment.author.username %></h6>
+        <% if(currentUser){ %>
+            <% if(currentUser._id.equals(comment.author.id)){ %>
+                <a href="/lists/<%= list._id %>/comments/edit/?id=<%= comment._id %>" ><h6 style="text-decoration:underline;">Edit</h6></a>
+            <% } %>
+        <% } %>
+        <hr>
         <hr>
     <% }) %>
     <% if (currentUser != null) { %>

@@ -1,0 +1,18 @@
+<% include ../partials/header %>
+
+<h1>Edit Comment</h1>
+<%= ccontent.id %>
+<div class="form__container">
+    <form class="form" action="/lists/<%= ccontent._id %>/comments/edit/?id=<%= ccontent._id %>" method="POST">
+    <div class="form__control">
+    <textarea class="form__input" rows="4" cols="50" name="commentText" placeholder=""><%= ccontent.text %></textarea>
+    </div>
+    <div class="form__control">
+    <button class="buttonx buttonx--secondary buttonx--small" type="submit">Edit It!</button>        
+    </div>
+
+</form>
+
+</div>
+
+<% include ../partials/footer %>

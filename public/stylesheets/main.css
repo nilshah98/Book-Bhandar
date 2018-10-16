@@ -93,6 +93,21 @@ hr {
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); }
 
+.about {
+  font-size: 2rem; }
+
+#question1 {
+  text-align: left;
+  font-size: 3.5rem !important; }
+
+#question2 {
+  text-align: left;
+  font-size: 3rem !important; }
+
+#signature {
+  font-size: 3rem !important;
+  text-align: right; }
+
 /* Basic styles */
 * {
   box-sizing: border-box; }
@@ -324,7 +339,7 @@ a {
   width: 25vh;
   height: 25vw;
   transform: rotate(-30deg) skew(25deg) scale(0.8);
-  transition: 0.5s;
+  transition: 2s;
   cursor: pointer;
   top: 10vh; }
   .isocard__content {
@@ -1018,7 +1033,7 @@ figure span:nth-child(1) {
   -webkit-transform: translate3d(0, 0, 30px); }
 
 figure span:nth-child(2) {
-  color: #0d420b;
+  color: #5c7b35;
   background: #fff;
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px); }
