@@ -9,6 +9,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var methodOverride = require('method-override');
 
+// Load ENV vars
+require('dotenv').config({path: __dirname + '/.env'})
+
 // MODEL FILES, For which schema to use
 var User = require('./models/user');                
 var List = require('./models/list');
@@ -34,7 +37,7 @@ app.use(logger('dev'));
 app.use(methodOverride("_method"));
 
 // CONNECT MONGOOSE, create a database named as bb
-var mongoDB = 'mongodb://127.0.0.1/bb';
+var mongoDB = process.env['DATABASE_CONN'];
 mongoose.connect(mongoDB);
 
 // SETUP MONGOOSE PROMISES AS GLOBAL PROMISES
