@@ -56,7 +56,7 @@
     </div>
     <br>
     <br>
-    <% if(list.user.id.equals(currentUser._id)){ %>
+    <% if(currentUser != null && list.user.id.equals(currentUser._id)){ %>
         <div style="display: flex;">
         <a href="/lists/<%= list._id %>/edit"><div class="buttonx buttonx--secondary">Edit</div></a>
         <a href="/search"><div class="buttonx buttonx--secondary">Add Books</div></a>
